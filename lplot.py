@@ -4,10 +4,12 @@ import math
 
 # Read data from the file
 data = np.loadtxt('output_Time_2000000.txt', skiprows=1)
+DNSdata= np.loadtxt('DNS.txt', skiprows=1)
 
+x1=DNSdata[:, 0]  
+y1=DNSdata[:, 1]  
 # Add parameters
 nu = 0.0002769
-
 # Extract data
 x = np.arange(0.5, 31, 1) #grids in Y, N=31
 #print(x)
@@ -26,6 +28,8 @@ print(u_x_ave[0])
 
 # Plot the data
 plt.figure(figsize=(8, 6))
+
+plt.scatter(x1, y1, marker='o', color='red', s=25,  label='DNS')
 plt.plot(y_plus, u_plus, label='U+', linestyle='--', marker='o')
 
 # Use a logarithmic x-axis
