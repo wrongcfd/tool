@@ -34,10 +34,10 @@ plt.plot(y_plus, u_plus, label='U+', linestyle='--', marker='o')
 
 # Use a logarithmic x-axis
 plt.xscale('log')
-plt.xlim(0, 130)
+plt.xlim(1, 130)
 
 plt.xlabel('y+')
 plt.ylabel('U+')
 plt.legend()
-plt.title('Ux, Ux_ave vs. X')
+#plt.title('Ux, Ux_ave vs. X')
 plt.show()
