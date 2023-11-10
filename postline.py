@@ -50,16 +50,18 @@ for t in range(DT + 1):
     x_middle = (len(x) // 2)
     z_middle = (len(z) // 2)
 
-    # Extract the needed data sets at the specified integer indices
+# Extract the needed data sets at the specified integer indices
     Ux = Gf[time + '/Ux'][z_middle - 1, :, x_middle - 1]
     Ux_ave = Gf[time + '/Ux_TimeAv'][z_middle - 1, :, x_middle - 1]
     uu = Gf[time + '/UxUx_TimeAv'][z_middle - 1, :, x_middle - 1]
+    UyUy_TimeAv = Gf[time + '/UyUy_TimeAv'][z_middle - 1, :, x_middle - 1]
+    UzUz_TimeAv = Gf[time + '/UzUz_TimeAv'][z_middle - 1, :, x_middle - 1]
 
     # Save the data to a .txt file with a time-specific name
     output_file = 'output_' + time + '.txt'
     with open(output_file, 'w') as f:
-        f.write('Ux Ux_ave uu \n')
-        np.savetxt(f, np.column_stack((Ux, Ux_ave, uu)))
+        f.write('Ux Ux_ave uu UyUy_TimeAv UzUz_TimeAv\n')
+        np.savetxt(f, np.column_stack((Ux, Ux_ave, uu, UyUy_TimeAv, UzUz_TimeAv)))
 
     print('\tfinishing', t + 1, '/', DT + 1, '\n')
 
