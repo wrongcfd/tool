@@ -47,23 +47,33 @@ for t in range(DT + 1):
     z = zPos[:, 0, 0]
 
     # Calculate the middle index for X and Z as integers
-    x_middle = (len(x) // 2)
+    #x_middle = (len(x) // 2)
     z_middle = (len(z) // 2)
 
-# Extract the needed data sets at the specified integer indices
-    Ux = Gf[time + '/Ux'][z_middle - 1, :, x_middle - 1]
-    Ux_ave = Gf[time + '/Ux_TimeAv'][z_middle - 1, :, x_middle - 1]
-    uu = Gf[time + '/UxUx_TimeAv'][z_middle - 1, :, x_middle - 1]
-    UyUy_TimeAv = Gf[time + '/UyUy_TimeAv'][z_middle - 1, :, x_middle - 1]
-    UzUz_TimeAv = Gf[time + '/UzUz_TimeAv'][z_middle - 1, :, x_middle - 1]
+    # Extract the needed data sets for all X and Y at the specified Z index
+    # Ux = Gf[time + '/Ux'][:, :, z_middle]
+    # Uy = Gf[time + '/Uy'][:, :, z_middle]
+    # Uz = Gf[time + '/Uz'][:, :, z_middle]
+    Ux_ave = Gf[time + '/Ux_TimeAv'][ z_middle,:,:]
+    # Uy_ave = Gf[time + '/Uy_TimeAv'][:, :, z_middle]
+    # Uz_ave = Gf[time + '/Uz_TimeAv'][:, :, z_middle]
+    # UxUx_TimeAv = Gf[time + '/UxUx_TimeAv'][:, :, z_middle]
+    # UyUy_TimeAv = Gf[time + '/UyUy_TimeAv'][:, :, z_middle]
+    # UzUz_TimeAv = Gf[time + '/UzUz_TimeAv'][:, :, z_middle]
 
     # Save the data to a .txt file with a time-specific name
-    output_file = 'output_' + time + '.txt'
+    output_file = 'Ufix_output_' + time + '.txt'
     with open(output_file, 'w') as f:
-        f.write('Ux Ux_ave uu UyUy_TimeAv UzUz_TimeAv\n')
-        np.savetxt(f, np.column_stack((Ux, Ux_ave, uu, UyUy_TimeAv, UzUz_TimeAv)))
-
+        #f.write('Ux Uy Uz Ux_ave Uy_ave Uz_ave UxUx_TimeAv UyUy_TimeAv UzUz_TimeAv\n')
+        # np.savetxt(f, np.column_stack((Ux, Uy, Uz, Ux_ave, Uy_ave, Uz_ave, UxUx_TimeAv, UyUy_TimeAv, UzUz_TimeAv)))
+        f.write('Ux_ave\n')
+        np.savetxt(f, np.row_stack((Ux_ave)))
     print('\tfinishing', t + 1, '/', DT + 1, '\n')
 
 Gf.close()
 print('work finished')
+
+
+
+
+
