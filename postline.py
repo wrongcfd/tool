@@ -62,7 +62,7 @@ for t in range(DT + 1):
     # UzUz_TimeAv = Gf[time + '/UzUz_TimeAv'][:, :, z_middle]
 
     # Save the data to a .txt file with a time-specific name
-    output_file = 'Ufix_output_' + time + '.txt'
+    output_file = 'hillN_smag_' + time + '.txt'
     with open(output_file, 'w') as f:
         #f.write('Ux Uy Uz Ux_ave Uy_ave Uz_ave UxUx_TimeAv UyUy_TimeAv UzUz_TimeAv\n')
         # np.savetxt(f, np.column_stack((Ux, Uy, Uz, Ux_ave, Uy_ave, Uz_ave, UxUx_TimeAv, UyUy_TimeAv, UzUz_TimeAv)))
